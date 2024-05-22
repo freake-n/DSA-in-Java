@@ -23,19 +23,32 @@ class Solution {
 
 // Optimal Approach O(n)
 
+// Using Kadane's Algorithm
 class Solution {
     public int maxSubArray(int[] nums) {
-        int msum=Integer.MIN_VALUE,sum=0;
-        for(int i=0;i<nums.length;i++)
-        {
-            sum=sum+nums[i];
+        // Initialize the maximum sum to the smallest possible integer value
+        int msum = Integer.MIN_VALUE;
+        // Initialize the current sum to 0
+        int sum = 0;
 
-            if(sum>msum)
-               msum=sum;
-            
-            if(sum<0)  // If at any point current sum becomes negative then make it zero and contunue with the adding process
-                sum=0;
+        // Iterate through each element in the array
+        for (int i = 0; i < nums.length; i++) {
+            // Add the current element to the current sum
+            sum = sum + nums[i];
+
+            // Update the maximum sum if the current sum is greater than the current maximum sum
+            if (sum > msum) {
+                msum = sum;
+            }
+
+            // If the current sum becomes negative, reset it to 0
+            // This is because a negative sum would decrease the overall sum of any subsequent subarray
+            if (sum < 0) {
+                sum = 0;
+            }
         }
+
+        // Return the maximum sum found
         return msum;
     }
 }
