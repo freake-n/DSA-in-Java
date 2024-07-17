@@ -14,9 +14,8 @@ class Node
 */
 public static Node reverseDLL(Node  head)
 {
-    if (head == null) {
+    if(head==null || head.next==null)
         return head;
-    }
     
     Node current = head;
     Node temp = null;
